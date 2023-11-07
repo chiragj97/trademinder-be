@@ -16,8 +16,9 @@ router.get('/', async (req, res) => {
 router.post('/add', async (req, res) => {
   try {
     const newRecord = req.body;
+    console.log('Record: ',newRecord)
     const insertedRecord = await knex('Mortgaged').insert(newRecord).returning('*');
-    res.status(201).json(insertedRecord);
+    res.status(200).json(insertedRecord);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while adding the record.' });

@@ -18,6 +18,7 @@ exports.up = function (knex) {
     table.integer('marketValue');
     table.decimal('interestRate', 5, 2);
     table.date('dateOfMortgage').notNullable().defaultTo(knex.fn.now());
+    table.text('status').defaultTo('Pending')
 
     table.primary('id', 'mortgaged_id__pk');
     table.unique(['shopId', 'billNumber'], 'mortgaged_shopId_billNumber__uk');
